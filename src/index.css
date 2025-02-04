@@ -1,1 +1,12 @@
+/* tailwindcss setup */
 @import "tailwindcss";
+
+.bg-cover {
+  background-image: url("./assets/banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-fixed {
+  background-attachment: fixed;
+}
