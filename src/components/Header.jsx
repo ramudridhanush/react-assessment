@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Header = ({ setSearchQuery }) => {
   const [isDark, setIsDark] = useState(true);
 
-  // Create a reference for the input field
   const inputRef = useRef(null);
 
   const toggleTheme = () => {
@@ -17,7 +16,6 @@ const Header = ({ setSearchQuery }) => {
     setSearchQuery(event.target.value);
   };
 
-  // Set focus on input field when the component mounts
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -33,7 +31,6 @@ const Header = ({ setSearchQuery }) => {
           </Link>
 
           <div className="flex items-center gap-6">
-            {/* Search Input */}
             <div className="relative hidden md:block">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -48,7 +45,6 @@ const Header = ({ setSearchQuery }) => {
               />
             </div>
 
-            {/* Navigation */}
             <nav className="flex items-center gap-6 text-gray-300">
               <Link to="/" className="hover:text-white">
                 Home
@@ -61,7 +57,6 @@ const Header = ({ setSearchQuery }) => {
               </Link>
             </nav>
 
-            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className="p-2 text-gray-300 hover:text-white"
