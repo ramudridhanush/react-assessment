@@ -31,7 +31,7 @@ const Home = () => {
           <h1 className="text-3xl font-bold">Recent Posts</h1>
           <Link
             to="/add"
-            className="bg-blue-500 bg-white text-blue-500 px-4 py-2 rounded hover:bg-blue-600 font-bold transition"
+            className="bg-blue-500 bg-white text-blue-500 px-4 py-2 rounded hover:bg-blue-600 hover:text-white font-bold transition"
           >
             Create Post
           </Link>
