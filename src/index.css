@@ -6,6 +6,16 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media (max-width: 650px) {
+  .bg-cover {
+    background-size: contain;
+    background-position: center;
+    background-image: url("./assets/hand.png");
+  }
+  
+}
+
 .bg-fixed {
   background-attachment: fixed;
 }
