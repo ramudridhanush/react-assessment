@@ -6,6 +6,7 @@ import BlogPage from "./components/Blogpage";
 import HomePage from "./pages/HomePage";
 import AddBlog from "./pages/AddBlog";
 import EditBlog from "./pages/EditBlog";
+import PageNotFound from "./pages/PageNotFound";
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/add" element={<AddBlog />} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/edit/:id" element={<EditBlog />} />
+        <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </Router>
   );

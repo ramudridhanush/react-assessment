@@ -46,8 +46,8 @@ const Home = () => {
                 className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition duration-300 shadow-md shadow-gray-400"
               >
                 <img
-                  src={    defaultImgURL}
-                  // src = {blog.images[0]}
+                  // src={    defaultImgURL}
+                  src = {blog.images[0]}
                   alt="Blog Cover"
                   className="w-full h-48 object-cover"
                 />

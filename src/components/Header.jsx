@@ -10,7 +10,7 @@ const Header = ({ setSearchQuery }) => {
 
   const toggleTheme = () => {
     setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark");
+    document.documentElement.classList.toggle("white");
   };
 
   const handleSearchChange = (event) => {

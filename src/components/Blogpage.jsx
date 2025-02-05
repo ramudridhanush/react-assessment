@@ -128,11 +128,12 @@ const BlogPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {blog.images.map((img, index) => (
             <img
+            
               key={index}
-              src={"https://random-image-pepebigotes.vercel.app/api/random-image"||img }
+              src={img || "https://random-image-pepebigotes.vercel.app/api/random-image" }
               alt={`Blog content ${index + 1}`}
-              className="w-full rounded-lg shadow-lg h-[300px] object-cover"
-            />
+              className="w-full h-[300px] object-cover rounded-lg shadow-lg border-2 border-gray-200"
+              />
           ))}
           <div className="flex gap-3 justify-center items-center "> 
 
