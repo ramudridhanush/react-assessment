@@ -10,6 +10,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { sharePost } from "../utils/commonFunction";
 
 const BlogPage = () => {
   const { id } = useParams();
@@ -83,6 +84,8 @@ const BlogPage = () => {
     localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
     window.location.href = '/';
   }
+ 
+  
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -166,7 +169,8 @@ const BlogPage = () => {
               <MessageCircle size={20} />
               {blog.comments?.length || 0}
             </button>
-            <button className="flex items-center gap-2 hover:text-green-400 transition">
+            <button onClick={()=>sharePost(window.location.href)}
+            className="flex items-center gap-2 hover:text-green-400 transition">
               <Share2 size={20} />
               Share
             </button>
