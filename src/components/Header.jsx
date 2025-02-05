@@ -29,7 +29,7 @@ const Header = ({ setSearchQuery }) => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-2xl font-bold text-white">
-            MetaBlog
+            My<span className="bg-gradient-to-r from-cyan-500 py-4 to-blue-500 text-transparent bg-clip-text">Blog</span>
           </Link>
 
           <div className="flex items-center gap-6">

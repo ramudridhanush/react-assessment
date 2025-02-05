@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Tags, Timer, Calendar, User, ThumbsUp } from "lucide-react";
-import Header from "./Header"; // Import Header
+import Header from "./Header"; 
 import HomeBanner from "./HomeBanner";
 
 const Home = () => {
@@ -19,10 +19,11 @@ const Home = () => {
     blog.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const defaultImgURL = "https://random-image-pepebigotes.vercel.app/api/random-image";
+
   return (
     <div className="min-h-screen bg-gray-900 text-white bg-cover bg-center bg-fixed">
       <Header setSearchQuery={setSearchQuery} />
-      {/* Main Content */}
       <HomeBanner />
 
       <div className="max-w-7xl mx-auto p-5 min-h-screen">
@@ -42,10 +43,11 @@ const Home = () => {
               <Link
                 key={blog.id}
                 to={`/blog/${blog.id}`}
-                className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition"
+                className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition duration-300 shadow-md shadow-gray-400"
               >
                 <img
-                  src={blog.images[0]}
+                  src={    defaultImgURL}
+                  // src = {blog.images[0]}
                   alt="Blog Cover"
                   className="w-full h-48 object-cover"
                 />

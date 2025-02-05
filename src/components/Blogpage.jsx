@@ -74,6 +74,16 @@ const BlogPage = () => {
       </div>
     );
 
+  const editHandler = ()=>{
+    window.location.href = `/edit/${id}`;
+  }
+  const deleteHandler = ()=>{
+    const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+    const updatedBlogs = blogs.filter((b) => b.id !== id);
+    localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
+    window.location.href = '/';
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="max-w-4xl mx-auto p-5">
@@ -104,7 +114,7 @@ const BlogPage = () => {
 
           <div className="flex items-center gap-2">
             <img
-              src="/api/placeholder/40/40"
+              src="https://avatar.iran.liara.run/public/boy"
               alt="Author"
               className="w-10 h-10 rounded-full"
             />
@@ -119,11 +129,16 @@ const BlogPage = () => {
           {blog.images.map((img, index) => (
             <img
               key={index}
-              src={img}
+              src={"https://random-image-pepebigotes.vercel.app/api/random-image"||img }
               alt={`Blog content ${index + 1}`}
               className="w-full rounded-lg shadow-lg h-[300px] object-cover"
             />
           ))}
+          <div className="flex gap-3 justify-center items-center "> 
+
+          <button onClick={editHandler} className="px-4 py-2 bg-teal-400 w-fit h-fit ">Edit</button>
+          < button onClick={deleteHandler} className="px-4 py-2 bg-red-400 w-fit h-fit">Delete</button>
+          </div>
         </div>
 
         <div className="prose prose-invert max-w-none mb-8">

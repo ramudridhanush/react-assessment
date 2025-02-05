@@ -1,20 +1,46 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plus } from "lucide-react";
 import Header from "../components/Header";
+import { useParams } from "react-router-dom";
 
-const AddBlog = () => {
+const EditBlog = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = React.useState({
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null); // Set initial state to null
+  const [formData, setFormData] = useState({
     title: "",
     author: "",
     keyword: "",
     category: "",
     readTime: "",
     summary: "",
-    content: [""],
+    content: [""], // Start with one content field
     images: [],
   });
+
+  useEffect(() => {
+    const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+    const foundBlog = blogs.find((b) => b.id === id);
+    if (foundBlog) {
+      setBlog(foundBlog);
+    }
+  }, [id]); // Run when id changes
+
+  useEffect(() => {
+    if (blog) {
+      setFormData({
+        title: blog.title,
+        author: blog.author,
+        keyword: blog.keyword,
+        category: blog.category,
+        readTime: blog.readTime,
+        summary: blog.summary,
+        content: blog.content || [""], // Default to an empty content array if not present
+        images: blog.images || [],
+      });
+    }
+  }, [blog]); // Run when `blog` changes
 
   const categories = [
     "Technology",
@@ -66,30 +92,38 @@ const AddBlog = () => {
     }
 
     const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
-    const newBlog = {
-      id: crypto.randomUUID(),
+    const updatedBlog = {
+      id,
       ...formData,
-      comments: [],
-      likes: 0,
-      uploadedDate: new Date().toISOString(),
-      readCount: 0,
+      comments: blog.comments || [],
+      likes: blog.likes || 0,
+      uploadedDate: blog.uploadedDate || new Date().toISOString(),
+      readCount: blog.readCount || 0,
     };
-    console.log(new Date().toISOString());
 
-    localStorage.setItem("blogs", JSON.stringify([...blogs, newBlog]));
+    const updatedBlogs = blogs.map((b) => (b.id === id ? updatedBlog : b));
+    localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
     navigate("/");
   };
+    const inputRef = useRef(null);
+  
+  useEffect(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, []);
 
   return (
     <div>
       <Header />
-      <div className="min-h-screen bg-gray-900 text-white p-5  py-[150px]">
-        <div className="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg  shadow-xl">
-          <h2 className="text-2xl font-bold mb-6">Create New Blog Post</h2>
+      <div className="min-h-screen bg-gray-900 text-white p-5 py-[150px]">
+        <div className="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-xl">
+          <h2 className="text-2xl font-bold mb-6">Edit Your Blog</h2>
 
           <div className="grid grid-cols-2 gap-4">
             <input
               type="text"
+                ref={inputRef}
               placeholder="Blog Title"
               className="col-span-2 p-3 rounded bg-gray-700 border border-gray-600"
               value={formData.title}
@@ -177,7 +211,7 @@ const AddBlog = () => {
             className="w-full mt-6 p-3 bg-blue-500 rounded font-semibold hover:bg-blue-600 transition"
             onClick={handleSave}
           >
-            Publish Blog
+            Save Blog
           </button>
         </div>
       </div>
@@ -185,4 +219,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;
+export default EditBlog;

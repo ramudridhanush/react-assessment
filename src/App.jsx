@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import BlogPage from "./components/Blogpage";
 import HomePage from "./pages/HomePage";
 import AddBlog from "./pages/AddBlog";
+import EditBlog from "./pages/EditBlog";
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/add" element={<AddBlog />} />
         <Route path="/blog/:id" element={<BlogPage />} />
+        <Route path="/edit/:id" element={<EditBlog />} />
       </Routes>
     </Router>
   );
