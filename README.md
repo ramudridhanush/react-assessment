@@ -1,7 +1,3 @@
-Here's a more concise version of the README:
-
----
-
 # Blog Website
 
 A simple blog website built with **React** (Vite), **Tailwind CSS**, and **LocalStorage** for CRUD operations. It allows users to create, read, update, and delete blog posts with persistent storage in the browser.
@@ -34,11 +30,3 @@ A simple blog website built with **React** (Vite), **Tailwind CSS**, and **Local
    ```bash
    npm run dev
    ```
-
-## License
-
-MIT License - see [LICENSE](LICENSE).
-
----
-
-This version keeps all the key details but is more compact!
