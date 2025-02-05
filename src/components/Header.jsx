@@ -30,8 +30,8 @@ const Header = ({ setSearchQuery }) => {
             My<span className="bg-gradient-to-r from-cyan-500 py-4 to-blue-500 text-transparent bg-clip-text">Blog</span>
           </Link>
 
-          <div className="flex items-center gap-6">
-            <div className="relative hidden md:block">
+          <div className="flex items-center gap-6 max-sm:gap-2">
+            <div className="relative  md:block max-sm:w-200px">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                 size={18}
@@ -45,7 +45,7 @@ const Header = ({ setSearchQuery }) => {
               />
             </div>
 
-            <nav className="flex items-center gap-6 text-gray-300">
+            <nav className="flex items-center gap-6 text-gray-300 max-sm:hidden">
               <Link to="/" className="hover:text-white">
                 Home
               </Link>
@@ -59,7 +59,7 @@ const Header = ({ setSearchQuery }) => {
 
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-300 hover:text-white"
+              className="p-2 text-gray-300 hover:text-white max-sm:hidden"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
